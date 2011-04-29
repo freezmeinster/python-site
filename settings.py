@@ -1,4 +1,5 @@
 # Django settings for bram project.
+import os,sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -7,12 +8,16 @@ ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
+
+
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'bram_python'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'root'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'keripiksingkong'         # Not used with sqlite3.
+DATABASE_USER = 'bram'             # Not used with sqlite3.
+DATABASE_PASSWORD = 'icanwaitforever'         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
@@ -65,11 +70,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'bram.urls'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
+TEMPLATE_DIRS = os.path.join(PROJECT_ROOT, 'templates')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -77,5 +78,5 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-    'bram.coba',
+    'main_site',
 )

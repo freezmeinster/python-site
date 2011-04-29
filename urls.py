@@ -5,8 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^bram/', include('bram.foo.urls')),
+    (r'^$','main_site.views.landing_page'),
+    (r'^blog/?', include('main_site.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
@@ -14,4 +14,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+    
+    (r'^asset/(?P<path>.*)$', 'django.views.static.serve',
+    {'document_root': '/root/project/bram/asset'}),
+    
 )
