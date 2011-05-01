@@ -10,6 +10,7 @@ ADMINS = (
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
+sys.path.insert(0, os.path.join(PROJECT_ROOT, 'libs'))
 
 
 MANAGERS = ADMINS
@@ -71,6 +72,11 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'bram.urls'
 
 TEMPLATE_DIRS = os.path.join(PROJECT_ROOT, 'templates')
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+'django.contrib.auth.context_processors.auth',
+'libs.context_processor.blog.attr',
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
