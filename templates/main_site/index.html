@@ -1,25 +1,12 @@
 {% extends "base.html"%}
 
 {% block content %}
-
-<div class="column">
-				<h3>Lorem Ipsum dolor sit amet</h3>
-				<img src="images/thumb.gif" alt="Thumb" />
-				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p class="more"><a href="#">read more</a></p>
-			</div>
-
-			<div class="column">
-				<h3>Lorem Ipsum dolor sit amet</h3>
-				<img src="images/thumb.gif" alt="Thumb" />
-				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p class="more"><a href="#">read more</a></p>
-			</div>	
-			
-			<div class="column last">
-				<h3>Lorem Ipsum dolor sit amet</h3>
-				<img src="images/thumb.gif" alt="Thumb" />
-				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p class="more"><a href="#">read more</a></p>
-			</div>	
+{% for data in news %}
+    <div class="column {% if forloop.counter|divisibleby:"3" %} last {% endif %}">
+	<h3>{{ data.title }}</h3>
+	{% if data.logo %}<img src="/{{ data.logo.url }}" height="100px"/>{% endif %}
+	<p>{{ data.content|truncatewords:40 }}</p>
+	<p class="more"><a href="">Read more</a></p>
+    </div>
+{% endfor %}	
 {% endblock %}

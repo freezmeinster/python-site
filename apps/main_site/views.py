@@ -3,16 +3,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from main_site.models import Product,Product_category
 
-def landing_page(request):
-    return render_to_response('main_site/index.html',{
-	'url' : 'blog',
-	},context_instance=RequestContext(request))
-
-def index_blog(request):
-    return render_to_response('main_site/index.html',{
-	'url' : 'blog',
-	},context_instance=RequestContext(request))
-
 def index_product(request):
     product = Product.objects.all()
     return render_to_response('main_site/product.html',{
