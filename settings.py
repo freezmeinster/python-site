@@ -9,18 +9,22 @@ ADMINS = (
 )
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
+sys.path.insert(0,'/usr/local/lib/python2.6/dist-packages/Django-1.3-py2.6.egg/')
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'libs'))
 
-
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'bram_python'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'bram'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'icanwaitforever'         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'bram_python',                      # Or path to database file if using sqlite3.
+        'USER': 'bram',                      # Not used with sqlite3.
+        'PASSWORD': 'icanwaitforever',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -75,7 +79,7 @@ TEMPLATE_DIRS = os.path.join(PROJECT_ROOT, 'templates')
 
 TEMPLATE_CONTEXT_PROCESSORS = (
 'django.contrib.auth.context_processors.auth',
-'libs.context_processor.blog.attr',
+'context_processor.blog.attr',
 )
 
 INSTALLED_APPS = (
