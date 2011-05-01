@@ -5,7 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$','main_site.views.landing_page'),
+    url(r'^$','main_site.views.landing_page',name='landing_page'),
     (r'^main/', include('main_site.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 

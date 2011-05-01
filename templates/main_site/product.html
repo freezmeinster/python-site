@@ -1,0 +1,13 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+{% for data in product %}
+    <div class="column {% if forloop.counter|divisibleby:"3" %} last {% endif %}">
+	<h3>{{ data.name }}</h3>
+	<img src="/{{ data.logo.url }}" height="100px"/>
+	<p>{{ data.content|truncatewords:40 }}</p>
+	<p class="more"><a href="">Read more</a></p>
+    </div>
+{% endfor %}	
+{% endblock %}

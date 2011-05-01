@@ -1,10 +1,11 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from main_site.models import Product,Product_category
 
 def landing_page(request):
     return render_to_response('main_site/index.html',{
-	'url' : 'home',
+	'url' : 'blog',
 	},context_instance=RequestContext(request))
 
 def index_blog(request):
@@ -13,8 +14,10 @@ def index_blog(request):
 	},context_instance=RequestContext(request))
 
 def index_product(request):
-    return render_to_response('main_site/index.html',{
+    product = Product.objects.all()
+    return render_to_response('main_site/product.html',{
 	'url' : 'product',
+	'product' : product,
 	},context_instance=RequestContext(request))
 
 def index_service(request):

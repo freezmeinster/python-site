@@ -4,19 +4,19 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="author" content="Luka Cvrk (www.solucija.com)" />
 	<link rel="stylesheet" href="/asset/css/main.css" type="text/css" />
-	<title>Enthusiastica</title>
+	<title>{{ header }}</title>
 </head>
 <body>
 	<div id="wrap">
 		<div id="logo">
-			<h1><a href="#">{{ header }}</a></h1>
+			<h1><a href="{% url landing_page %}">{{ header }}</a></h1>
 			<p>{{ slogan }}</p>
 		</div>
 		
 		<div id="menu">
 			<div id="menu-left"></div>
 			<ul>
-				<li><a {% if url == "blog"%} class="current" {% endif %} href="{% url index_blog  %}"><span>Home</span></a></li>
+				<li><a {% if url == "blog" %} class="current" {% endif %} href="{% url index_blog  %}"><span>Home</span></a></li>
 				<li><a {% if url == "product"%} class="current" {% endif %} href="{% url index_product  %}"><span>Products</span></a></li>
 				<li><a {% if url == "service"%} class="current" {% endif %} href="{% url index_service  %}"><span>Services</span></a></li>
 				<li><a {% if url == "about"%} class="current" {% endif %} href="{% url index_about  %}"><span>About Us</span></a></li>
