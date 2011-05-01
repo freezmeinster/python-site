@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$','main_site.views.landing_page'),
-    (r'^blog/?', include('main_site.urls')),
+    (r'^main/', include('main_site.urls')),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

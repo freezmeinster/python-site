@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="author" content="Luka Cvrk (www.solucija.com)" />
+	<link rel="stylesheet" href="/asset/css/main.css" type="text/css" />
+	<title>Enthusiastica</title>
+</head>
+<body>
+	<div id="wrap">
+		<div id="logo">
+			<h1><a href="#">{{ header }}</a></h1>
+			<p>{{ slogan }}</p>
+		</div>
+		
+		<div id="menu">
+			<div id="menu-left"></div>
+			<ul>
+				<li><a {% if url == "blog"%} class="current" {% endif %} href="{% url index_blog  %}"><span>Home</span></a></li>
+				<li><a {% if url == "product"%} class="current" {% endif %} href="{% url index_product  %}"><span>Products</span></a></li>
+				<li><a {% if url == "service"%} class="current" {% endif %} href="{% url index_service  %}"><span>Services</span></a></li>
+				<li><a {% if url == "about"%} class="current" {% endif %} href="{% url index_about  %}"><span>About Us</span></a></li>
+				<li><a {% if url == "contact"%} class="current" {% endif %} href="{% url index_contact  %}"><span>Contact Us</span></a></li>
+			</ul>
+			<div id="menu-right"></div>
+		</div>
+		
+		<div id="content-top"></div>
+		<div id="content-middle">
+		 {% block content %}{% endblock %}
+			<div class="clear"></div>
+		</div>
+		
+		<div id="content-bottom"></div>
+		<div id="footer">
+			<p id="links">
+				<a href="#">Terms and Conditions</a>
+				<a href="#">Privacy</a>
+				<a href="{% url index_about  %}">About Us</a>
+			</p>
+			<p>Copyright &copy;Glue Network Developer &middot; Design: Luka Cvrk, <a href="http://www.solucija.com" title="Free CSS Templates">Solucija</a></p>
+		</div>
+	</div>	
+</body>
+</html>
