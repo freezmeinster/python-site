@@ -40,5 +40,17 @@ class Product( models.Model ):
     def __unicode__(self):
 	return self.name
 	
+class Static_content( models.Model ):
+    link = models.CharField(max_length=255)
+    header = models.CharField(max_length=255)
+    content = models.TextField()
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_edit = models.DateTimeField(auto_now=True)
+    
+    class Meta :
+	verbose_name_plural = "Daftar Konten Statik"
+    
+    def __unicode__(self):
+	return self.link
     
     

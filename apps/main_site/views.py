@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from main_site.models import Product,Product_category
+from main_site.models import Product,Product_category,Static_content
 
 def index_product(request):
     product = Product.objects.all()
@@ -16,8 +16,10 @@ def index_service(request):
 	},context_instance=RequestContext(request))
 
 def index_about(request):
-    return render_to_response('main_site/index.html',{
+    static = Static_content.objects.get(link='about')
+    return render_to_response('main_site/about.html',{
 	'url' : 'about',
+	'content' : static,
 	},context_instance=RequestContext(request))
 
 def index_contact(request):
