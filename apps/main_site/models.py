@@ -5,10 +5,10 @@ class Site_setting( models.Model ):
     value = models.CharField(max_length=255)
     
     class Meta:
-	verbose_name_plural = 'Daftar Setting'
+		verbose_name_plural = 'Daftar Setting'
 	
     def __unicode__(self):
-	return self.key
+		return self.key
 	
 	
 class Product_category( models.Model ):
@@ -22,10 +22,10 @@ class Product_category( models.Model ):
     status = models.CharField(max_length=1,choices=STATUS)
     
     class Meta:
-	verbose_name_plural = 'Daftar Kategori'
+		verbose_name_plural = 'Daftar Kategori'
 	
     def __unicode__(self):
-	return self.name
+		return self.name
 	
 	
 class Product( models.Model ):
@@ -35,10 +35,10 @@ class Product( models.Model ):
     product_category = models.ManyToManyField(Product_category)
     
     class Meta:
-	verbose_name_plural = 'Daftar Produk'
+		verbose_name_plural = 'Daftar Produk'
 	
     def __unicode__(self):
-	return self.name
+		return self.name
 	
 class Static_content( models.Model ):
     link = models.CharField(max_length=255)
@@ -48,9 +48,35 @@ class Static_content( models.Model ):
     date_edit = models.DateTimeField(auto_now=True)
     
     class Meta :
-	verbose_name_plural = "Daftar Konten Statik"
+		verbose_name_plural = "Daftar Konten Statik"
     
     def __unicode__(self):
-	return self.link
+		return self.link
     
+class Service_category(models.Model):
+	STATUS = (
+		('A','Akrif'),
+		('N','Tidak Aktif')
+	)
+	
+	name = models.CharField(max_length=255)
+	description = models.TextField()
+	status = models.CharField(max_length=1,choices=STATUS)
+	
+	class Meta:
+		verbose_name_plural = 'Daftar Kategori Service'
+	
+	def __unicode__(self):
+		return self.name    
+
+class Service( models.Model ):
+    name = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to="asset/service/")
+    content = models.TextField()
+    service_category = models.ManyToManyField(Service_category)
     
+    class Meta:
+		verbose_name_plural = 'Daftar  Service'
+	
+    def __unicode__(self):
+		return self.name

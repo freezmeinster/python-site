@@ -16,6 +16,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     
     (r'^asset/(?P<path>.*)$', 'django.views.static.serve',
-    {'document_root': '/root/project/bram/asset'}),
+    {'document_root': '/opt/asset/'}),
     
 )
